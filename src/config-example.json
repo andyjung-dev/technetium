@@ -1,0 +1,6 @@
+{
+    "port": 9723,
+    "name":"technetium",
+    "slackToken":"xoxb-SLACK-TOKEN-GOES-HERE",
+    "mongoUrl":"mongodb://URL-GOES-HERE"
+}

@@ -1,0 +1,28 @@
+version: '2.1'
+services:
+  technetium:
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    image: technetium:dev
+    command: ["bash", "-c", "npm run start:dev"]
+    environment:
+      - NODE_ENV=local
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "9723:9723"
+    depends_on:
+      - "db"
+  db:
+    image: mongo:latest
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+        - "27017:27017"
+    volumes:
+        - mongodb_data_container:/data/db
+volumes:
+    mongodb_data_container:
